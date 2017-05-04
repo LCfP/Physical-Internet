@@ -1,0 +1,15 @@
+package physicalInternet;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Receiver receiver = new Receiver();
+		Shipper shipper = new Shipper();
+
+		receiver.reportReceiverProgress();
+		shipper.reportShipperProgress();
+		
+
+	}
+
+}
