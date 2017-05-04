@@ -1,0 +1,15 @@
+package physicalInternet;
+
+public class Receiver {
+
+	private static int customerNumber = 10;
+	private static int orderNumber = 20;
+	
+	public static int getCustomerNumber(){
+		return customerNumber;
+	}
+	public static int getOrderNumber(){
+		return orderNumber;
+	}
+
+}
