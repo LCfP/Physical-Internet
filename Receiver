@@ -2,14 +2,19 @@ package physicalInternet;
 
 public class Receiver {
 
-	private static int customerNumber = 10;
-	private static int orderNumber = 20;
+	private int customerNumber = 10;
+	private int orderNumber = 20;
 	
-	public static int getCustomerNumber(){
+	public int getCustomerNumber(){
 		return customerNumber;
 	}
-	public static int getOrderNumber(){
+	public int getOrderNumber(){
 		return orderNumber;
+	}
+
+	public void reportReceiverProgress() {
+		System.out.println(customerNumber);
+		System.out.println(orderNumber);
 	}
 
 }
