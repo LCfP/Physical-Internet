@@ -1,0 +1,20 @@
+package physicalInternet;
+
+public class Shipper {
+	public static void main(String[] args) {
+		System.out.println(customerNumber);
+		System.out.println(orderNumber);
+	}
+
+	private static int customerNumber = Receiver.getCustomerNumber();
+	private static int orderNumber = Receiver.getOrderNumber();
+
+	public static int getCustomerNumber() {
+		return customerNumber;
+	}
+
+	public static int getOrderNumber() {
+		return orderNumber;
+
+	}
+}
