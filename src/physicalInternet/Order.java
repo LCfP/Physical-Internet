@@ -40,5 +40,4 @@ public class Order {
 	public void setProducts(ArrayList<Product> products) {
 		this.products = products;
 	}
-
 }

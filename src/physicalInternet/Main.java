@@ -15,7 +15,5 @@ public class Main {
 			hub.sendOrderToReceiver(order1, receiver);
 			// receiver.showOrdersinReceivers();
 		}
-
 	}
-
 }

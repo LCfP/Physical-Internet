@@ -9,11 +9,9 @@ public class Receivers {
 	private static ArrayList<Order> orders = new ArrayList<Order>();
 
 	public void getOrder(Order order) {
-
 		orders.add(order);
 		showOrdersinReceivers();
 		// removerOrder(order);
-
 	}
 
 	public void showOrdersinReceivers() {
@@ -22,7 +20,6 @@ public class Receivers {
 			System.out.println("Address:" + order.getAddress());
 			System.out.println("Customer Number:" + order.getCustomerNumber());
 		}
-
 	}
 
 	public Order placeOrder() {
@@ -33,7 +30,8 @@ public class Receivers {
 
 		int randomNum = ThreadLocalRandom.current().nextInt(1, 32 + 1);
 		for (int i = 1; i < randomNum; i++) {
-			Product product = new Product(10, 5, 3, 2, "Iphone"); // We create a new product.
+			// We create a new product.
+			Product product = new Product(10, 5, 3, 2, "Iphone"); 
 			products.add(product);
 		}
 
@@ -43,19 +41,16 @@ public class Receivers {
 		order.setCustomerNumber(scan.nextInt());
 		System.out.println("Enter address");
 		order.setAddress(scan.next());
+		
 		return order;
-
 	}
 
 	public void sendOrderToShipper(Order order, Shipper shipper) {
 
 		shipper.getOrder(order);
-
 	}
 
 	private void removerOrder(Order order) {
 		orders.remove(order);
-
 	}
-
 }
