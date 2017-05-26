@@ -39,7 +39,7 @@ public class Transit {
     }
 
     public void transitToHub(int time, Hub hub) {
-        for (Iterator<Order> iterator = ordersToHub.iterator(); iterator.hasNext()) {
+        for (Iterator<Order> iterator = ordersToHub.iterator(); iterator.hasNext();) {
             Order order = iterator.next();
 
             if (order.getTimeOfOrder() + transitTime == time) {
@@ -54,7 +54,7 @@ public class Transit {
     }
 
     public void transitToReceiver(int time, Receiver receiver) {
-        for (Iterator<Order> iterator = ordersToReceiver.iterator(); iterator.hasNext()) {
+        for (Iterator<Order> iterator = ordersToReceiver.iterator(); iterator.hasNext();) {
             Order order = iterator.next();
 
             if (order.getTimeOfOrder() + 2 * transitTime == time) {

@@ -5,7 +5,24 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Receiver {
+    public final int region;
     private ArrayList<Order> orders = new ArrayList<Order>();
+
+    /**
+     * Constructor
+     */
+    public Receiver() {
+        this.region = 0;
+    }
+
+    /**
+     * Constructor
+     *
+     * @param region The region identifier (as an integer).
+     */
+    public Receiver(int region) {
+        this.region = region;
+    }
 
     public void getOrder(Order order) {
         orders.add(order);

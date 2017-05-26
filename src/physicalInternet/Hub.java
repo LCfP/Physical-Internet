@@ -4,7 +4,24 @@ package physicalInternet;
 import java.util.ArrayList;
 
 public class Hub {
+    public final int region;
     private ArrayList<Order> orders = new ArrayList<Order>();
+
+    /**
+     * Constructor
+     */
+    public Hub() {
+        this.region = 0;
+    }
+
+    /**
+     * Constructor
+     *
+     * @param region The region identifier (as an integer).
+     */
+    public Hub(int region) {
+        this.region = region;
+    }
 
     public void getOrder(Order order) {
         orders.add(order);
