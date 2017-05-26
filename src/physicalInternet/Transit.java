@@ -6,6 +6,7 @@ import java.util.Iterator;
 public class Transit {
 	private static ArrayList<Order> ordersToHub = new ArrayList<Order>();
 	private static ArrayList<Order> ordersToReceiver = new ArrayList<Order>();
+	private static int transitTime = 2;
 
 	public void getOrderFromShipper(Order order) {
 		
@@ -39,7 +40,7 @@ public class Transit {
 	public void transitToHub(int time,Hub hub){
 		for (Iterator<Order> iterator = ordersToHub.iterator(); iterator.hasNext();) {
 			Order  order = iterator.next();
-			if(order.getTimeOfOrder()+2==time)
+			if(order.getTimeOfOrder()+transitTime==time)
 			{
 		       sendOrderToHub(order, hub);
 				iterator.remove();
@@ -54,7 +55,7 @@ public class Transit {
 		public void transitToReceiver(int time,Receiver receiver){
 	for (Iterator<Order> iterator = ordersToReceiver.iterator(); iterator.hasNext();) {
 		Order  order = iterator.next();
-		if(order.getTimeOfOrder()+3==time)
+		if(order.getTimeOfOrder()+2*transitTime==time)
 		{
 	       sendOrderToReceiver(order, receiver);
 			iterator.remove();

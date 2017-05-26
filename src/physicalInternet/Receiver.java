@@ -1,7 +1,7 @@
 package physicalInternet;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Receiver {
