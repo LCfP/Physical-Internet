@@ -1,13 +1,13 @@
-package physicalInternet;
-
 import java.util.ArrayList;
 
 public class Shipper {
 	private static ArrayList<Order> orders = new ArrayList<Order>();
 
 	public void getOrder(Order order) {
+
 		orders.add(order);
 		showOrdersinShipper();
+
 	}
 
 	public void showOrdersinShipper() {
@@ -16,14 +16,18 @@ public class Shipper {
 			System.out.println("Address:" + order.getAddress());
 			System.out.println("Customer Number:" + order.getCustomerNumber());
 		}
+
 	}
 
 	public void sendOrderToHub(Order order, Hub hub) {
 		hub.getOrder(order);
 		removerOrder(order);
+
 	}
 
 	private void removerOrder(Order order) {
 		orders.remove(order);
+
 	}
+
 }
