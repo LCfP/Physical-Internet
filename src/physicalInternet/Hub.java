@@ -38,6 +38,11 @@ public class Hub {
         }
     }
 
+    public void sendOrderToHub(Order order, Hub other) {
+        other.getOrder(order);
+        removeOrder(order);
+    }
+
     public void sendOrderToReceiver(Order order, Transit transit) {
         transit.getOrderFromHub(order);
         removeOrder(order);
