@@ -1,0 +1,22 @@
+package physicalInternet;
+
+
+public class Shipper {
+	Receiver receiver = new Receiver();
+
+	private  int customerNumber = receiver.getCustomerNumber();
+	private  int orderNumber = receiver.getOrderNumber();
+
+	public int getCustomerNumber() {
+		return customerNumber;
+	}
+
+	public int getOrderNumber() {
+		return orderNumber;
+
+	}
+	public void reportShipperProgress(){
+		System.out.println(customerNumber);
+		System.out.println(orderNumber);
+	}
+}
