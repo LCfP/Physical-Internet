@@ -1,4 +1,5 @@
-package transport;
+
+package physicalInternet;
 
 public class Main {
 	
@@ -7,7 +8,5 @@ public class Main {
 		Simulation simulate = new Simulation();
 		simulate.runSimulation();
 		
-		}
-	}
-
+}}
 

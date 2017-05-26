@@ -1,15 +1,16 @@
-package transport;
+package physicalInternet;
+
 
 import java.util.ArrayList;
 
 public class Hub {
+
 	private  ArrayList<Order> orders = new ArrayList<Order>();
 
 	public void getOrder(Order order) {
 		
 		orders.add(order);
 		showOrdersinHub();
-
 	}
 
 	public void showOrdersinHub() {
@@ -26,12 +27,19 @@ public class Hub {
 		transit.getOrderFromHub(order);
 		removerOrder(order);
 
+
+		}
+
+	public void sendOrderToReceiver(Order order, Receiver receiver) {
+		receiver.getOrder(order);
+		removerOrder(order);
+
 	}
 
 	private void removerOrder(Order order) {
 		orders.remove(order);
 
+
 	}
 
 }
-
