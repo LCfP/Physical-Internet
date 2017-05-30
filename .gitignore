@@ -1,0 +1,12 @@
+/bin/
+
+# I.a. compiled files
+*.classpath
+*.class
+/out/
+*.project
+
+
+# Jetbrains IDE
+/.idea/
+*.iml
