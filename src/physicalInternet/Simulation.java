@@ -20,6 +20,8 @@ public class Simulation {
 
         Hub hub = new Hub(); // Main hub
         Transit transit = new Transit();
+        
+        
 
         for (int i = 1; i <= this.noRegions; i++) {
             // Hubs in regions 1, 2, 3, etc.. Note that 0 is reserved for the main hub!
@@ -29,15 +31,24 @@ public class Simulation {
         for (int time = 0; time < 10; time++) //no of minutes
         {
             // Create new shipper and receivers with a random (uniformly distributed) region.
-            Receiver receiver = new Receiver(rand.nextInt(this.noRegions));
-            Shipper shipper = new Shipper(rand.nextInt(this.noRegions));
+           
+        	Receiver receiver = new Receiver(rand.nextInt(this.noRegions));
+            // create new product
+        	Product product = new Product (10.0,3,4,5,"iphone");
+        	
+        	Shipper shipper = new Shipper(rand.nextInt(this.noRegions));
+        	
 
             Order order = receiver.placeOrder(time);
             receiver.sendOrderToShipper(order, shipper);
+            
+            
 
             shipper.sendOrderToHub(order, transit);
             // transfer to the Shipper's regional hub
             transit.transitToHub(time, this.regionalHubs.get(shipper.region));
+            Truck truck = new Truck();
+            truck.SetTrailorAttached(true);
 
             this.regionalHubs.get(shipper.region).sendOrderToHub(order, hub);
             // transfer to the main hub
