@@ -4,14 +4,18 @@ package physicalInternet;
 import java.util.ArrayList;
 
 public class Hub {
-    public final int region;
+   
     private ArrayList<Order> orders = new ArrayList<Order>();
+private int x;
+private int y;
 
     /**
      * Constructor
      */
-    public Hub() {
-        this.region = 0;
+    public Hub(int x,int y) {
+      
+        this.x=x;
+        this.y=y;
     }
 
     /**
@@ -19,8 +23,10 @@ public class Hub {
      *
      * @param region The region identifier (as an integer).
      */
-    public Hub(int region) {
-        this.region = region;
+    public Hub(int region,int x ,int y) {
+      
+        this.x=x;
+        this.y=y;
     }
 
     public void getOrder(Order order) {
@@ -56,4 +62,20 @@ public class Hub {
     private void removeOrder(Order order) {
         orders.remove(order);
     }
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
 }

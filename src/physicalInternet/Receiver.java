@@ -5,23 +5,22 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Receiver {
-    public final int region;
+   
     private ArrayList<Order> orders = new ArrayList<Order>();
+    private int x;
+    private int y;
 
-    /**
-     * Constructor
-     */
-    public Receiver() {
-        this.region = 0;
-    }
+   
 
     /**
      * Constructor
      *
      * @param region The region identifier (as an integer).
      */
-    public Receiver(int region) {
-        this.region = region;
+    public Receiver(int x,int y) {
+     
+        this.x=x;
+        this.y=y;
     }
 
     public void getOrder(Order order) {
@@ -66,4 +65,16 @@ public class Receiver {
     private void removeOrder(Order order) {
         orders.remove(order);
     }
+
+	public int getX() {
+		return x;
+	}
+
+	
+
+	public int getY() {
+		return y;
+	}
+
+	
 }

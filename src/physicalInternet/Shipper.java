@@ -4,23 +4,21 @@ package physicalInternet;
 import java.util.ArrayList;
 
 public class Shipper {
-    public final int region;
+  
     private ArrayList<Order> orders = new ArrayList<Order>();
+    private int x;
+    private int y;
 
-    /**
-     * Constructor
-     */
-    public Shipper() {
-        this.region = 0;
-    }
-
+ 
     /**
      * Constructor
      *
      * @param region The region identifier (as an integer).
      */
-    public Shipper(int region) {
-        this.region = region;
+    public Shipper(int region,int x,int y) {
+    
+        this.x=x;
+        this.y=y;
     }
 
     public void getOrder(Order order) {
@@ -45,4 +43,20 @@ public class Shipper {
     private void removeOrder(Order order) {
         orders.remove(order);
     }
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
 }
