@@ -2,11 +2,11 @@ package physicalInternet;
 
 
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Shipper {
     public final int region;
     private ArrayList<Order> orders = new ArrayList<Order>();
+    private ArrayList<Container> containers = new ArrayList<Container>();
 
     /**
      * Constructor
@@ -37,10 +37,13 @@ public class Shipper {
             System.out.println("Customer Number" + order.getCustomerNumber());
         }
     }
+    public void Container(Container container) {
+        containers.add(container);
+        container.setOrders(orders);
+    }
 
     public void sendOrderToHub(Order order, Transit transit, Container container) {
         transit.getOrderFromShipper(order);
-        container.setOrders(orders);
         removeOrder(order);
     }
 

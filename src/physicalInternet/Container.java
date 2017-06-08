@@ -9,11 +9,12 @@ public class Container {
 	private String adress;
 	private ArrayList<Order> orders;
 
-	public Container(Order order) {
+	public Container(Order order, Shipper shipper) {
 		this.customerNumber = order.getCustomerNumber();
-		this.orderNumber = order.getCustomerNumber();
-		this.containerNumber = order.getCustomerNumber();
+		this.orderNumber = order.getOrderNumber();
+		this.containerNumber = order.getOrderNumber();
 		this.adress = order.getAddress();
+        orders.add(order);
 	}
 	
 	public ArrayList<Order> getOrders() {
