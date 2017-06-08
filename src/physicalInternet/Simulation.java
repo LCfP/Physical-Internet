@@ -20,7 +20,7 @@ public class Simulation {
 		Random rand = new Random();
 
 		Hub hub = new Hub(); // Main hub
-		Transit transit = new Transit();
+		
 
 		for (int i = 1; i <= this.noRegions; i++) {
 			// Hubs in regions 1, 2, 3, etc.. Note that 0 is reserved for the
@@ -41,23 +41,27 @@ public class Simulation {
 
 			Order order = receiver.placeOrder(time);
 			receiver.sendOrderToShipper(order, shipper);
-
-			shipper.sendOrderToHub(order, transit);
-			// transfer to the Shipper's regional hub
-			transit.transitToHub(time, this.regionalHubs.get(shipper.region));
+	
 			Truck truck = new Truck();
-			truck.SetTrailerAttached(true);
+			Container container = new Container();
+			shipper.sendOrderToHub(order, truck);
+			// transfer to the Shipper's regional hub
+			shipper.putOrderInContainer(order, container);
+			// Check if this works container.showOrdersInContainer();
+			truck.transitToHub(time, this.regionalHubs.get(shipper.region));
 
+			truck.coupleTrailer();
+			
 			this.regionalHubs.get(shipper.region).sendOrderToHub(order, hub);
 			// transfer to the main hub
-			transit.transitToHub(time, hub);
+			truck.transitToHub(time, hub);
 
 			// main hub to regional hub
 			hub.sendOrderToHub(order, this.regionalHubs.get(receiver.region));
-			transit.transitToHub(time, hub);
+			truck.transitToHub(time, hub);
 
-			this.regionalHubs.get(receiver.region).sendOrderToReceiver(order, transit);
-			transit.transitToReceiver(time, receiver);
+			this.regionalHubs.get(receiver.region).sendOrderToReceiver(order, truck);
+			truck.transitToReceiver(time, receiver);
 		}
 	}
 }

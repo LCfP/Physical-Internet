@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Trailer {
 	private double trailerWeight = 100;
 	private ArrayList<Product> productsOnTrailer;
+	private ArrayList<Container> containersOnTrailer;
 
 	// put products on trailer
 	public ArrayList<Product> getProducts() {
@@ -19,8 +20,12 @@ public class Trailer {
 		return trailerWeight;
 	}
 
-	public void setTrailorWeight(int trailorWeight, Product product) {
-		this.trailerWeight = this.trailerWeight + product.getWeight();
+	public void setTrailerWeight(int trailerWeight, Order order) {
+		this.trailerWeight = trailerWeight + order.getWeightOrder();
 
 	}
+
+	public void setContainersOnTrailer(Container container) {
+		containersOnTrailer.add(container);
+	} // Have to call total amount of shippers.
 }
