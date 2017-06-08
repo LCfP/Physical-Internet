@@ -2,6 +2,7 @@ package physicalInternet;
 
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Shipper {
     public final int region;
@@ -37,10 +38,12 @@ public class Shipper {
         }
     }
 
-    public void sendOrderToHub(Order order, Transit transit) {
+    public void sendOrderToHub(Order order, Transit transit, Container container) {
         transit.getOrderFromShipper(order);
+        container.setOrders(orders);
         removeOrder(order);
     }
+
 
     private void removeOrder(Order order) {
         orders.remove(order);

@@ -1,29 +1,27 @@
 package physicalInternet;
 
-public class Container {
-    private double weight;
-    private int volume;
-    private int customerNumber;
-    private int orderNumber;
-    private int containerNumber;
-    private String adress;
-    
-    public Container (double weight, int volume, int customerNumber, int orderNumber, int containerNumber, String adress){
-    	this.weight = weight;
-    	this.volume = volume;
-    	this.customerNumber = customerNumber;
-    	this.orderNumber = orderNumber;
-    	this.containerNumber = containerNumber;
-    	this.adress = adress;
-    	
-    }
+import java.util.ArrayList;
 
-	public double getWeight() {
-		return weight;
+public class Container {
+	private int customerNumber;
+	private int orderNumber;
+	private int containerNumber;
+	private String adress;
+	private ArrayList<Order> orders;
+
+	public Container(Order order) {
+		this.customerNumber = order.getCustomerNumber();
+		this.orderNumber = order.getCustomerNumber();
+		this.containerNumber = order.getCustomerNumber();
+		this.adress = order.getAddress();
+	}
+	
+	public ArrayList<Order> getOrders() {
+		return orders;
 	}
 
-	public int getVolume() {
-		return volume;
+	public void setOrders(ArrayList<Order> orders) {
+		this.orders = orders;
 	}
 
 	public int getCustomerNumber() {
