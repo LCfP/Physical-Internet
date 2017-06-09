@@ -5,76 +5,81 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Receiver {
-   
-    private ArrayList<Order> orders = new ArrayList<Order>();
-    private int x;
-    private int y;
 
-   
+	private ArrayList<Order> orders = new ArrayList<Order>();
+	private int receiverId;
+	private int x;
+	private int y;
 
-    /**
-     * Constructor
-     *
-     * @param region The region identifier (as an integer).
-     */
-    public Receiver(int x,int y) {
-     
-        this.x=x;
-        this.y=y;
-    }
+	/**
+	 * Constructor
+	 *
+	 * @param region
+	 *            The region identifier (as an integer).
+	 */
+	public Receiver(int x, int y,int receiverId) {
+        this.receiverId=receiverId;
+		this.x = x;
+		this.y = y;
+	}
 
-    public void getOrder(Order order) {
-        orders.add(order);
-        showOrdersinReceiver();
-        removeOrder(order);
-    }
+	public int getReceiverId() {
+		return receiverId;
+	}
 
-    public void showOrdersinReceiver() {
-        System.out.println("In Receiver:");
+	public void setReceiverId(int receiverId) {
+		this.receiverId = receiverId;
+	}
 
-        for (Order order : orders) {
-            System.out.println("Address:" + order.getAddress());
-            System.out.println("Customer Number:" + order.getCustomerNumber());
-            System.out.println("time" + order.getTimeOfOrder());
-        }
-    }
+	public void getOrder(Order order) {
+		orders.add(order);
+		showOrdersinReceiver();
+		removeOrder(order);
+	}
 
-    public Order placeOrder(int i) {
-        Order order = new Order();
-        order.setAddress("Adress" + i);
-        order.setCustomerNumber(i);
-        order.setTimeOfOrder(i);
+	public void showOrdersinReceiver() {
+		System.out.println("In Receiver:");
 
-        ArrayList<Product> products = new ArrayList<Product>();
+		for (Order order : orders) {
+			System.out.println("Address:" + order.getAddress());
+			System.out.println("Customer Number:" + order.getCustomerNumber());
+			System.out.println("time" + order.getTimeOfOrder());
+		}
+	}
 
-        int randomNum = ThreadLocalRandom.current().nextInt(1, 32 + 1);
-        for (int j = 1; j < randomNum; j++) {
-            // We create a new product.
-            Product product = new Product(10, 5, 3, 2, "Iphone");
-            products.add(product);
-        }
+	public Order placeOrder(int i) {
+		Order order = new Order();
+		order.setAddress("Adress" + i);
+		order.setCustomerNumber(receiverId);
+		order.setTimeOfOrder(i);
 
-        order.setProducts(products); // Connect product to order.
-        return order;
-    }
+		ArrayList<Product> products = new ArrayList<Product>();
 
-    public void sendOrderToShipper(Order order, Shipper shipper) {
-        shipper.getOrder(order);
-    }
+		int randomNum = ThreadLocalRandom.current().nextInt(1, 32 + 1);
+		for (int j = 1; j < randomNum; j++) {
+			// We create a new product.
+			Product product = new Product(10, 5, 3, 2, "Iphone");
+			products.add(product);
+		}
 
-    private void removeOrder(Order order) {
-        orders.remove(order);
-    }
+		order.setProducts(products); // Connect product to order.
+		return order;
+	}
+
+	public void sendOrderToShipper(Order order, Shipper shipper) {
+		shipper.getOrder(order);
+	}
+
+	private void removeOrder(Order order) {
+		orders.remove(order);
+	}
 
 	public int getX() {
 		return x;
 	}
 
-	
-
 	public int getY() {
 		return y;
 	}
 
-	
 }

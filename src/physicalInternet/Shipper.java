@@ -1,48 +1,47 @@
 package physicalInternet;
 
-
 import java.util.ArrayList;
 
 public class Shipper {
-  
-    private ArrayList<Order> orders = new ArrayList<Order>();
-    private int x;
-    private int y;
 
- 
-    /**
-     * Constructor
-     *
-     * @param region The region identifier (as an integer).
-     */
-    public Shipper(int region,int x,int y) {
-    
-        this.x=x;
-        this.y=y;
-    }
+	private ArrayList<Order> orders = new ArrayList<Order>();
+	private int x;
+	private int y;
 
-    public void getOrder(Order order) {
-        orders.add(order);
-        showOrdersinShipper();
-    }
+	/**
+	 * Constructor
+	 *
+	 * @param region
+	 *            The region identifier (as an integer).
+	 */
+	public Shipper(int x, int y) {
 
-    public void showOrdersinShipper() {
-        System.out.println("In Shipper:");
+		this.x = x;
+		this.y = y;
+	}
 
-        for (Order order : orders) {
-            System.out.println("Address:" + order.getAddress());
-            System.out.println("Customer Number" + order.getCustomerNumber());
-        }
-    }
+	public void getOrder(Order order) {
+		orders.add(order);
+		//showOrdersinShipper();
+	}
 
-    public void sendOrderToHub(Order order, Transit transit) {
-        transit.getOrderFromShipper(order);
-        removeOrder(order);
-    }
+	public void showOrdersinShipper() {
+		System.out.println("In Shipper:");
 
-    private void removeOrder(Order order) {
-        orders.remove(order);
-    }
+		for (Order order : orders) {
+			System.out.println("Address:" + order.getAddress());
+			System.out.println("Customer Number" + order.getCustomerNumber());
+		}
+	}
+
+	public void sendOrderToHub(Order order, Transit transit) {
+		transit.getOrderFromShipper(order);
+		removeOrder(order);
+	}
+
+	private void removeOrder(Order order) {
+		orders.remove(order);
+	}
 
 	public int getX() {
 		return x;
