@@ -18,6 +18,21 @@ public class Simulation {
 
 	public void runSimulation() {
 		Random rand = new Random();
+		
+		Hinterland hinterland1 = new Hinterland(1,0,49); 
+		Hinterland hinterland2 = new Hinterland(2,50,100); 
+		
+		hinterland1.addRegion(11, 0, 49);
+		hinterland1.addRegion(12, 1, 49);
+		hinterland1.addRegion(13, 3, 49);
+		hinterland1.addRegion(14, 4, 49);
+		hinterland1.addRegion(15, 5, 49);
+		
+		hinterland2.addRegion(21, 51, 80);
+		hinterland2.addRegion(22, 52, 70);
+		hinterland2.addRegion(23, 53, 60);
+		hinterland2.addRegion(24, 54, 55);
+		hinterland2.addRegion(25, 46, 90);
 
 		Hub hub = new Hub(); // Main hub
 		
@@ -27,7 +42,11 @@ public class Simulation {
 			// main hub!
 			this.regionalHubs.add(new Hub(i));
 		}
-
+			
+			
+					
+			
+			
 		for (int time = 0; time < 10; time++) // no of minutes
 		{
 			// Create new shipper and receivers with a random (uniformly
@@ -46,7 +65,7 @@ public class Simulation {
 			Container container = new Container();
 			shipper.sendOrderToHub(order, truck);
 			// transfer to the Shipper's regional hub
-			shipper.putOrderInContainer(order, container);
+			//shipper.putOrderInContainer(order, container);
 			// Check if this works container.showOrdersInContainer();
 			truck.transitToHub(time, this.regionalHubs.get(shipper.region));
 
@@ -60,7 +79,7 @@ public class Simulation {
 			hub.sendOrderToHub(order, this.regionalHubs.get(receiver.region));
 			truck.transitToHub(time, hub);
 
-			this.regionalHubs.get(receiver.region).sendOrderToReceiver(order, truck);
+			//this.regionalHubs.get(receiver.region).sendOrderToReceiver(order, truck);
 			truck.transitToReceiver(time, receiver);
 		}
 	}

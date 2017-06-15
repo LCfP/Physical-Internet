@@ -21,7 +21,7 @@ public class Trailer {
 	}
 
 	public void setTrailerWeight(int trailerWeight, Order order) {
-		this.trailerWeight = trailerWeight + order.getWeightOrder();
+		//this.trailerWeight = trailerWeight + order.getWeightOrder();
 
 	}
 
