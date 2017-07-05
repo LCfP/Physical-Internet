@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Receiver {
 
 	private ArrayList<Order> orders = new ArrayList<Order>();
-	private int receiverId;
+	private int customerNumber;
 	private int x;
 	private int y;
 
@@ -17,40 +17,41 @@ public class Receiver {
 	 * @param region
 	 *            The region identifier (as an integer).
 	 */
-	public Receiver(int x, int y,int receiverId) {
-        this.receiverId=receiverId;
+	public Receiver(int x, int y, int customerNumber) {
+		this.customerNumber = customerNumber;
 		this.x = x;
 		this.y = y;
 	}
 
-	public int getReceiverId() {
-		return receiverId;
+	public int getCustomerNumber() {
+		return customerNumber;
 	}
 
-	public void setReceiverId(int receiverId) {
-		this.receiverId = receiverId;
+	public void setustomerNumber(int customerNumber) {
+		this.customerNumber = customerNumber;
 	}
 
-	public void getOrder(Order order) {
+	public void getOrder(Order order, Transit transit) {
 		orders.add(order);
+		transit.ordersToBeRemovedFromTransit.add(order);
 		showOrdersinReceiver();
-		removeOrder(order);
+		// removeOrder(order);
 	}
 
 	public void showOrdersinReceiver() {
-		System.out.println("In Receiver:");
+		System.out.println("Customer " + customerNumber);
 
 		for (Order order : orders) {
-			System.out.println("Address:" + order.getAddress());
-			System.out.println("Customer Number:" + order.getCustomerNumber());
-			System.out.println("time" + order.getTimeOfOrder());
+			System.out.println("Order:");
+			System.out.print("Customer Number:" + order.getCustomerNumber());
+			System.out.println("  time" + order.getTimeOfOrder());
 		}
 	}
 
 	public Order placeOrder(int i) {
 		Order order = new Order();
 		order.setAddress("Adress" + i);
-		order.setCustomerNumber(receiverId);
+		order.setCustomerNumber(customerNumber);
 		order.setTimeOfOrder(i);
 
 		ArrayList<Product> products = new ArrayList<Product>();
@@ -68,10 +69,6 @@ public class Receiver {
 
 	public void sendOrderToShipper(Order order, Shipper shipper) {
 		shipper.getOrder(order);
-	}
-
-	private void removeOrder(Order order) {
-		orders.remove(order);
 	}
 
 	public int getX() {

@@ -1,53 +1,61 @@
 package physicalInternet;
 
-
 import java.util.ArrayList;
 
 public class Order {
-    private int customerNumber;
-    private int orderNumber;
-    private String address;
-    private ArrayList<Product> products;
-    private int timeOfOrder;
+	private int customerNumber;
+	private int orderNumber;
+	private String address;
+	private ArrayList<Product> products;
+	private int timeOfOrder;
+	private String nextDestination;
 
-    public int getCustomerNumber() {
-        return this.customerNumber;
-    }
+	public int getCustomerNumber() {
+		return this.customerNumber;
+	}
 
-    public void setCustomerNumber(int customerNumber) {
-        this.customerNumber = customerNumber;
-    }
+	public void setCustomerNumber(int customerNumber) {
+		this.customerNumber = customerNumber;
+	}
 
-    public int getOrderNumber() {
-        return this.orderNumber;
-    }
+	public int getOrderNumber() {
+		return this.orderNumber;
+	}
 
-    public void setOrderNumber(int orderNumber) {
-        this.orderNumber = orderNumber;
-    }
+	public void setOrderNumber(int orderNumber) {
+		this.orderNumber = orderNumber;
+	}
 
-    public String getAddress() {
-        return this.address;
-    }
+	public String getAddress() {
+		return this.address;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    public ArrayList<Product> getProducts() {
-        return this.products;
-    }
+	public ArrayList<Product> getProducts() {
+		return this.products;
+	}
 
-    public void setProducts(ArrayList<Product> products) {
-        this.products = products;
-    }
+	public void setProducts(ArrayList<Product> products) {
+		this.products = products;
+	}
 
-    public int getTimeOfOrder() {
-        return timeOfOrder;
-    }
+	public int getTimeOfOrder() {
+		return timeOfOrder;
+	}
 
-    public void setTimeOfOrder(int timeOfOrder) {
-        this.timeOfOrder = timeOfOrder;
-    }
+	public void setTimeOfOrder(int timeOfOrder) {
+		this.timeOfOrder = timeOfOrder;
+	}
+
+	public String getNextDestination() {
+		return nextDestination;
+	}
+
+	public void setNextDestination(String nextDestination) {
+		this.nextDestination = nextDestination;
+	}
+
 }
-

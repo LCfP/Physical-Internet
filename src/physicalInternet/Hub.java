@@ -17,9 +17,10 @@ public class Hub {
 		this.y = y;
 	}
 
-	public void getOrder(Order order) {
+	public void getOrder(Order order, Transit transit) {
+		transit.ordersToBeRemovedFromTransit.add(order);
 		orders.add(order);
-		//showOrdersinHub();
+		// showOrdersinHub();
 	}
 
 	public void showOrdersinHub() {
@@ -30,25 +31,6 @@ public class Hub {
 			System.out.println("Customer Number:" + order.getCustomerNumber());
 			System.out.println("time" + order.getTimeOfOrder());
 		}
-	}
-
-	public void sendOrderToMainHub(Hub mainHub, Transit transit) {
-		if (!orders.isEmpty()) {
-			transit.sendOrdersToMainHub(mainHub, orders.get(0));
-			removeOrder(orders.get(0));
-		}
-	}
-
-	public void sendOrderToRegionalHub(Hub regionalHub, Transit transit) {
-		if (!orders.isEmpty()) {
-			transit.sendOrdersToRegionalHub(regionalHub, orders.get(0));
-			removeOrder(orders.get(0));
-		}
-	}
-
-	public void sendOrderToReceiver(Order order, Transit transit) {
-		transit.getOrderFromHub(order);
-		removeOrder(order);
 	}
 
 	private void removeOrder(Order order) {
@@ -71,19 +53,12 @@ public class Hub {
 		this.y = y;
 	}
 
-	public void findReceiverandSentOrder(ArrayList<Receiver> receivers, Transit transit) {
-
-		if (!orders.isEmpty()) {
-
-			Order currentOrder = orders.get(0);
-			for (Receiver receiver : receivers) {
-				if (receiver.getReceiverId() == currentOrder.getCustomerNumber()) {
-					transit.transitToReceiver(Simulation.currentTime, receiver);
-					// removeOrder(orders.get(0));
-				}
-			}
-
+	public void sendOrder(Transit transit) {
+		if (orders.isEmpty()) {
+			return;
 		}
 
+		transit.ordersToBeAddedToTransit.add(orders.get(0));
+		removeOrder(orders.get(0));
 	}
 }

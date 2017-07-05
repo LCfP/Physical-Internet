@@ -22,7 +22,7 @@ public class Shipper {
 
 	public void getOrder(Order order) {
 		orders.add(order);
-		//showOrdersinShipper();
+		// showOrdersinShipper();
 	}
 
 	public void showOrdersinShipper() {
@@ -34,8 +34,9 @@ public class Shipper {
 		}
 	}
 
-	public void sendOrderToHub(Order order, Transit transit) {
-		transit.getOrderFromShipper(order);
+	public void sendOrder(Order order, Transit transit) {
+		order.setNextDestination(Simulation.REGIONAL_HUB_NEAR_SHIPPER);
+		transit.getOrder(order);
 		removeOrder(order);
 	}
 
